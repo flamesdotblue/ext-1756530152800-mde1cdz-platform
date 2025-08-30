@@ -1,28 +1,32 @@
-import { useState } from 'react'
+import React from 'react';
+import NavBar from './components/NavBar';
+import Hero from './components/Hero';
+import ProjectGrid from './components/ProjectGrid';
+import Footer from './components/Footer';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
+    <div className="min-h-screen bg-black text-white selection:bg-fuchsia-500 selection:text-white">
+      <BackgroundFX />
+      <NavBar />
+      <Hero />
+      <ProjectGrid />
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+function BackgroundFX() {
+  return (
+    <>
+      <div className="fixed inset-0 pointer-events-none" aria-hidden>
+        <div className="absolute inset-0 opacity-40 mix-blend-screen" style={{
+          background: 'radial-gradient(1200px 600px at 10% 10%, rgba(236,72,153,0.25), transparent 60%), radial-gradient(1000px 500px at 90% 20%, rgba(56,189,248,0.2), transparent 60%), radial-gradient(1000px 700px at 50% 90%, rgba(139,92,246,0.2), transparent 60%)'
+        }} />
+        <div className="absolute inset-0 opacity-[0.08]" style={{
+          backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\' viewBox=\'0 0 100 100\'%3E%3Cdefs%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3CfeColorMatrix type=\'saturate\' values=\'0\'/%3E%3C/filter%3E%3C/defs%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E")'
+        }} />
+      </div>
+    </>
+  );
+}
